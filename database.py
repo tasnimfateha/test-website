@@ -90,6 +90,17 @@ def addApplication(job_id, data):
             data['work_experience'],
         ))
 
+def search_jobs(position, location):
+    connection = sqlite3.connect('job.db')
+    connection.row_factory = sqlite3.Row
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM allJob WHERE Title LIKE ? AND Location LIKE ?", ('%'+position+'%', '%'+location+'%'))
+    rows = cursor.fetchall()
+    jobs = []
+    for r in rows:
+        jobs.append(dict(r))
+    return jobs
+
 # Committing the changes
 connection.commit()
 

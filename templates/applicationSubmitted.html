@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+        {% include 'bootstrap.html' %}
     <title>Application Submitted</title>  
   </head>
   <body>
 
-    <div class="container">
-
+    <div>
+      <h1 class="text-center">CONGRATULATIONS!!</h1>
       <p>Your application for the role of <b>{{job['Title']}}</b> at <b>{{job['Company']}}</b> has been submitted!</p>
       
       <b>Full Name</b>

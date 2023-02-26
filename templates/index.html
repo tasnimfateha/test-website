@@ -2,29 +2,71 @@
   <html>
     <head>
       <title> career website </title>
+          {% include 'bootstrap.html' %}
       <style>
-        h1{
-          text-align: center;
-          font-family: Roboto;
-          font-size: 32px;
-        }
-        #container {
-        max-width: 500px;
-        }
-        </style>
+        .cardimg {
+    height: 400px;
+    width: 110%;
+    object-fit:cover;
+    margin-bottom: 16px;
+          }
+    .body {
+      
+      margin: 50px;
+    }
+           </style>
     </head>
     <body>
-      <!--"https://pixabay.com/users/deemar-230593/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=335298">Eddie Mar Delos Angeles</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=335298">Pixabay"-->
-     <div id="container">
-      <img src ="https://test-website.tasnimfateha.repl.co/static/people-g8fe28655d_1280.jpg">
-      
-      
-      <h1>Open positions</h1>
-             <div>
-        {% for job in jobs %}
-          {% include 'jobitem.html' %}
-        {% endfor %}
+      <!--"Image by <a href="https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2904780">Gerd Altmann</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2904780">Pixabay</a>-->   
+      <div>
+  <img class="cardimg" src="static/dream-job-g748fb8b1f_1920.jpg" alt="Card image"> 
       </div>
-     </div>
+      <div class="body">
+      <h1 class="text-center">JOB FEED</h1>
+
+<form action="{{ url_for('search_jobs') }}" method="post">
+  <div class="row g-2">
+    <div class="col-md">
+      <div class="form-floating">
+        <input type="text" class="form-control" name="position" placeholder="Software Developer">
+        <label for="floatingInputGrid">Position</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <input type="text" class="form-control" name="location" placeholder="Armenia">
+        <label for="floatingInputGrid">Location</label>
+      </div>
+    </div>
+    <div class="col-md">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </div>
+</form>
+        
+        <!--   <div class="row g-2">
+  <div class="col-md">
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInputGrid" placeholder="Software Developer" value="Software Developer">
+      <label for="floatingInputGrid">Position</label>
+    </div>
+  </div>
+  <div class="col-md">
+    <div class="form-floating">
+      <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+        <option selected>Armenia</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+      <label for="floatingSelectGrid">Location</label>
+    </div>
+  </div>
+</div> -->
+        </div>
+      <div class="body">
+          {% include 'jobitem.html' %}
+      </div>
+      </div>
     </body>
   </html>

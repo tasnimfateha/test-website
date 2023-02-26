@@ -1,29 +1,33 @@
-<h4>Application Form</h4>
-<form action="/job/{{job['id']}}/apply" method="post">
-  <div class="mb-2">
-  <label>Full Name</label><br>
-  <input type="text" required name="full_name" placeholder="Your first and last name">
+{% include 'bootstrap.html' %}
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Application Form</h4>
+      <form action="/job/{{job['id']}}/apply" method="post" class="form-group">
+        <div>
+          <label class="form-label">Full Name</label><br>
+          <input type="text" required name="full_name" class="form-control" placeholder="Your first and last name">
+        </div>
+        <div>
+          <label class="form-label">Email</label><br>
+          <input type="email" required name="email" class="form-control" id="floatingInput" placeholder="sample@mail.com">
+        </div>
+        <div>
+          <label class="form-label">LinkedIn URL</label><br>
+          <input type="url" name="linkedin_url" class="form-control" id="floatingInput" placeholder="https://linked.com/tomcruise">
+        </div>
+        <div>
+          <label class="form-label">Education</label><br>
+          <textarea name="education" class="form-control" id="floatingTextarea" style="height: 100px"></textarea>
+        </div>
+        <div>
+          <label class="form-label">Work Experience</label><br>
+          <textarea name="work_experience" id="floatingTextarea" class="form-control" style="height: 100px"></textarea>
+        </div>
+        <div class="mt-4">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
-
-  <div class="mb-2">
-  <label>Email</label><br>
-  <input type="email" required name="email" placeholder="sample@mail.com">
-  </div>
-
-  <div class="mb-2">
-  <label>LinkedIn URL</label><br>
-  <input type="url" name="linkedin_url" placeholder="https://linked.com/tomcruise">
-  </div>
-
-  <div class="mb-2">
-    <label>Education</label><br>
-    <textarea name="education"></textarea>
-  </div>
-
-  <div class="mb-2">
-    <label>Work Experience</label><br>
-    <textarea name="work_experience"></textarea>
-  </div>
-
-  <input type="submit">
-</form>
+</div>

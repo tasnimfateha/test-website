@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Careers</title>
+    <title>job details</title>
+    {% include 'bootstrap.html' %}
+          <style>
+        .cardimg2 {
+    height: 400px;
+    width: 110%;
+    margin-bottom: 50px;
+    object-fit:cover;
+          }
+    .body {
+      
+      margin: 50px;
+    }
+           </style>
   </head>
   <body>
-    <div class="container">
-      <h1 class="text-center mt-2 mb-4">
-        Careers
+    <div>
+      <!-- Image by <a href="https://pixabay.com/users/vishnu_kv-3192151/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2575036">vishnu vijayan</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2575036">Pixabay</a> -->
+  <img class="cardimg2" src="/static/oie_R9oXL4iosIkJ.jpg" alt="Card image"> 
+      </div>
+      <div class="body">
+      <h1 class="text-center">
+        JOB DETAILS
       </h1>
-      <h3 class="mb-2">{{job.Title}}</h3>
-      <p class="mb-2">{{job.Company}}</p>
+      <h3 class="mb-2">{{job.Company}}</h3>
+      <h5 class="mb-2">{{job.Title}}</h5>
       <p class="lead mt-0">{{job.Location}}</p>
       <h4>Job Description</h4>
       <ul>
