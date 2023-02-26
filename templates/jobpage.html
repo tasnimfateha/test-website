@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Careers</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mt-2 mb-4">
+        Careers
+      </h1>
+      <h3 class="mb-2">{{job.Title}}</h3>
+      <p class="mb-2">{{job.Company}}</p>
+      <p class="lead mt-0">{{job.Location}}</p>
+      <h4>Job Description</h4>
+      <ul>
+        {% for line in job.JobDescription.split("\n") %}
+         <li>{{line}}</li> 
+        {% endfor %}
+      </ul>
+
+      {% include 'applicationform.html' %}
+    </div>
+  </body>
+</html>

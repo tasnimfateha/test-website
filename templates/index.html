@@ -1,0 +1,30 @@
+<DOCTYPE html>
+  <html>
+    <head>
+      <title> career website </title>
+      <style>
+        h1{
+          text-align: center;
+          font-family: Roboto;
+          font-size: 32px;
+        }
+        #container {
+        max-width: 500px;
+        }
+        </style>
+    </head>
+    <body>
+      <!--"https://pixabay.com/users/deemar-230593/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=335298">Eddie Mar Delos Angeles</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=335298">Pixabay"-->
+     <div id="container">
+      <img src ="https://test-website.tasnimfateha.repl.co/static/people-g8fe28655d_1280.jpg">
+      
+      
+      <h1>Open positions</h1>
+             <div>
+        {% for job in jobs %}
+          {% include 'jobitem.html' %}
+        {% endfor %}
+      </div>
+     </div>
+    </body>
+  </html>
