@@ -34,7 +34,7 @@ def search_jobs_route():
     position = request.form['position']
     location = request.form['location']
     jobs = search_jobs(position, location)
-    return render_template('jobitem.html', jobs=jobs)
+    return render_template('index.html', jobs=jobs)
 
 if __name__ == "__main__":
   app.run(host='0.0.0.0', debug= True)
