@@ -30,6 +30,5 @@ HOW TO OPERATE AS A USER:
 3. It will take you to application page. There you can see the details of the job and a application form.
 4. Fill out the application form with appropriate details and format. 
 5. It will then take you to a application successful page where you will be able to see your details with a message confirming that your application is successful.
-6. click 'Back to Home' button to get back to the Home page.
 
 

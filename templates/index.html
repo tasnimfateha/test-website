@@ -1,58 +1,68 @@
+<!-- Define the document type -->
 <DOCTYPE html>
-  <html>
-    <head>
-      <title> career website </title>
-          {% include 'bootstrap.html' %}
-      <style>
-        .cardimg {
-    height: 400px;
-    width: 110%;
-    object-fit:cover;
-    margin-bottom: 16px;
-          }
-    .body {
-      
-      margin: 50px;
-    }
-          a {
-    color: black;
-    text-decoration: none;
-    border-bottom: none;
-  }
-           </style>
-    </head>
-    <body>
+<html>
+  <head>
+    <!-- Define the title of the page -->
+    <title> career website </title>
+    
+    <!-- Include the bootstrap HTML file -->
+    {% include 'bootstrap.html' %}
+    
+    <!-- Define some custom CSS styles -->
+    <style>
+      .cardimg {
+        height: 400px;
+        width: 110%;
+        object-fit:cover;
+        margin-bottom: 16px;
+      }
+      .body {
+        margin: 50px;
+      }
+      a {
+        color: black;
+        text-decoration: none;
+        border-bottom: none;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <!-- Add a header section with an image and title -->
+    
       <!--"Image by <a href="https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2904780">Gerd Altmann</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2904780">Pixabay</a>-->   
       <div>
   <img class="cardimg" src="static/dream-job-g748fb8b1f_1920.jpg" alt="Card image"> 
       </div>
       <div class="body">
       <h1 class="text-center"><a href="index.html">CAREER OPPORTUNITIES</a></h1>    
-<form action="{{ url_for('search_jobs_route') }}" method="post" >
-  <div class="row g-2">
-    <div class="col-md">
-      <div class="form-floating">
-        <input type="text" class="form-control" name="position" placeholder="Software Developer">
-        <label for="floatingInputGrid">Position</label>
-      </div>
-    </div>
-    <div class="col-md">
-      <div class="form-floating">
-        <input type="text" class="form-control" name="location" placeholder="Armenia">
-        <label for="floatingInputGrid">Location</label>
-      </div>
-    </div>
-    <div class="col-md">
-      <button type="submit" class="btn btn-primary">Search</button>
-    </div>
-  </div>
-</form>
 
-        
+        <!-- Create a search form -->
+      <form action="{{ url_for('search_jobs_route') }}" method="post" >
+        <div class="row g-2">
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" name="position" placeholder="Software Developer">
+              <label for="floatingInputGrid">Position</label>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" name="location" placeholder="Armenia">
+              <label for="floatingInputGrid">Location</label>
+            </div>
+          </div>
+          <div class="col-md">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </div>
         </div>
-      <div class="body">
-          {% include 'jobitem.html' %}
-      </div>
-      </div>
-    </body>
-  </html>
+      </form>
+      
+    </div>
+    
+    <div class="body">
+      <!-- Include a job item template -->
+      {% include 'jobitem.html' %}
+    </div>
+  </body>
+</html>
