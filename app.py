@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from database import job_list, job_details, addApplication, search_jobs
-from flask_paginate import Pagination, get_page_parameter
 
 app = Flask(__name__)
 
@@ -36,15 +35,6 @@ def search_jobs_route():
     location = request.form['location']
     jobs = search_jobs(position, location)
     return render_template('index.html', jobs=jobs)
-
-@app.route('/jobs')
-def jobs():
-    page = request.args.get(get_page_parameter(), type=int, default=1)
-    per_page = 10
-    total = len(job_list())
-    pagination = Pagination(page=page, total=total, per_page=per_page)
-    jobs = job_list()[pagination.offset: pagination.offset +      pagination.per_page]
-    return render_template('jobitem.html', jobs=jobs, pagination=pagination)
 
 
 if __name__ == "__main__":

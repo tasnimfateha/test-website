@@ -24,6 +24,12 @@
         text-decoration: none;
         border-bottom: none;
       }
+      .search-form-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
     </style>
   </head>
   <body>
@@ -38,7 +44,7 @@
       <h1 class="text-center"><a href="index.html">CAREER OPPORTUNITIES</a></h1>    
 
         <!-- Create a search form -->
-      <form action="{{ url_for('search_jobs_route') }}" method="post" >
+        <form action="{{ url_for('search_jobs_route') }}" method="post">
         <div class="row g-2">
           <div class="col-md">
             <div class="form-floating">
@@ -52,12 +58,11 @@
               <label for="floatingInputGrid">Location</label>
             </div>
           </div>
-          <div class="col-md">
+          <div class="search-form-row">
             <button type="submit" class="btn btn-primary">Search</button>
           </div>
         </div>
       </form>
-      
     </div>
     
     <div class="body">

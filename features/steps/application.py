@@ -12,7 +12,7 @@ def click(context):
     """ 
     Find the desired link
     """
-    context.browser.find_element_by_partial_link_text('2').click()
+    context.browser.find_element_by_partial_link_text('1').click()
 
 @then(u'I should see a page which contains job details and an application form')
 def details(context):

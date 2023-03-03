@@ -8,7 +8,9 @@ A job posting usually has some structure, although some fields of the posting ar
 
 ACKNOWLEDGEMENT:
 
-The data collection and initial research was funded by the American University of Armenia’s research grant (2015).source: https://www.kaggle.com/datasets/madhab/jobposts
+The data collection and initial research was funded by the American University of Armenia’s research grant (2015).
+
+source: https://www.kaggle.com/datasets/madhab/jobposts
 
 SETTING UP THIS PROJECT:
 
