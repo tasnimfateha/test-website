@@ -34,7 +34,6 @@ insert_job = "INSERT INTO allJob (Title,Company,Location,JobDescription) VALUES 
 # Importing the contents of the file into our allJob table
 cursor.executemany(insert_job, contents)
 
-
 # Drop table if exists
 cursor.execute('DROP TABLE IF EXISTS applications')
 
@@ -51,38 +50,42 @@ create_application_table = '''CREATE TABLE applications (
 
 cursor.execute(create_application_table)
 
-  # SQL query to retrieve all data from the allJob table
-def job_list():
-    connection = sqlite3.connect('job.db')
-    connection.row_factory = sqlite3.Row
-    cursor = connection.cursor()
-    select_all = "SELECT * FROM allJob"
-    rows = cursor.execute(select_all).fetchall()
-    jobs = []
 
-    # Output to the console screen
-    for r in rows:
-        jobs.append(dict(r))
-    return jobs
+# SQL query to retrieve all data from the allJob table
+def job_list():
+  connection = sqlite3.connect('job.db')
+  connection.row_factory = sqlite3.Row
+  cursor = connection.cursor()
+  select_all = "SELECT * FROM allJob"
+  rows = cursor.execute(select_all).fetchall()
+  jobs = []
+
+  # Output to the console screen
+  for r in rows:
+    jobs.append(dict(r))
+  return jobs
+
 
 # Get job by ID
 def job_details(id):
-    connection = sqlite3.connect('job.db')
-    connection.row_factory = sqlite3.Row
-    cursor = connection.cursor()
-    result = cursor.execute("SELECT * FROM allJob WHERE id = ?", (id,))
-    row = result.fetchone()
-    if row is None:
-        return None
-    else:
-        return dict(row)
+  connection = sqlite3.connect('job.db')
+  connection.row_factory = sqlite3.Row
+  cursor = connection.cursor()
+  result = cursor.execute("SELECT * FROM allJob WHERE id = ?", (id, ))
+  row = result.fetchone()
+  if row is None:
+    return None
+  else:
+    return dict(row)
+
 
 def addApplication(job_id, data):
-    connection = sqlite3.connect('job.db')
-    connection.row_factory = sqlite3.Row
-    cursor = connection.cursor()
-    query = "INSERT INTO applications (job_id, full_name, email, linkedin_url, education, work_experience) VALUES (?, ?, ?, ?, ?, ?)"
-    cursor.execute(query, (
+    try:
+        connection = sqlite3.connect('job.db')
+        connection.row_factory = sqlite3.Row
+        cursor = connection.cursor()
+        query = "INSERT INTO applications (job_id, full_name, email, linkedin_url, education, work_experience) VALUES (?, ?, ?, ?, ?, ?)"
+        cursor.execute(query, (
             job_id,
             data['full_name'],
             data['email'],
@@ -90,31 +93,43 @@ def addApplication(job_id, data):
             data['education'],
             data['work_experience'],
         ))
+        connection.commit()
+        return True
+    except sqlite3.Error as e:
+        print(f"Error inserting application: {e}")
+        return False
+    finally:
+        connection.close()
+
+
 
 def search_jobs(position, location):
-    connection = sqlite3.connect('job.db')
-    connection.row_factory = sqlite3.Row
-    cursor = connection.cursor()
-    cursor.execute("SELECT * FROM allJob WHERE Title LIKE ? AND Location LIKE ?", ('%'+position+'%', '%'+location+'%'))
-    rows = cursor.fetchall()
-    jobs = []
-    for r in rows:
-        jobs.append(dict(r))
-    return jobs
+  connection = sqlite3.connect('job.db')
+  connection.row_factory = sqlite3.Row
+  cursor = connection.cursor()
+  cursor.execute("SELECT * FROM allJob WHERE Title LIKE ? AND Location LIKE ?",
+                 ('%' + position + '%', '%' + location + '%'))
+  rows = cursor.fetchall()
+  jobs = []
+  for r in rows:
+    jobs.append(dict(r))
+  return jobs
 
-  # SQL query to retrieve all data from the allJob table
+
 def applications_list():
-    connection = sqlite3.connect('job.db')
-    connection.row_factory = sqlite3.Row
-    cursor = connection.cursor()
-    select_all = "SELECT * FROM applications"
-    rows = cursor.execute(select_all).fetchall()
-    applications = []
+  connection = sqlite3.connect('job.db')
+  connection.row_factory = sqlite3.Row
+  cursor = connection.cursor()
+  select_all = '''SELECT a.id, a.full_name, a.email, j.Company, j.Title
+                    FROM applications a
+                    INNER JOIN allJob j ON a.job_id=j.id'''
+  rows = cursor.execute(select_all).fetchall()
+  applications = []
+  for i in rows:
+    applications.append(dict(i))
+  return applications
 
-    # Output to the console screen
-    for i in rows:
-        applications.append(dict(i))
-    return applications
+
 # Committing the changes
 connection.commit()
 
