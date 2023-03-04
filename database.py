@@ -50,7 +50,8 @@ create_application_table = '''CREATE TABLE applications (
                  FOREIGN KEY(job_id) REFERENCES allJob(id))'''
 
 cursor.execute(create_application_table)
-# SQL query to retrieve all data from the allJob table
+
+  # SQL query to retrieve all data from the allJob table
 def job_list():
     connection = sqlite3.connect('job.db')
     connection.row_factory = sqlite3.Row
@@ -101,6 +102,19 @@ def search_jobs(position, location):
         jobs.append(dict(r))
     return jobs
 
+  # SQL query to retrieve all data from the allJob table
+def applications_list():
+    connection = sqlite3.connect('job.db')
+    connection.row_factory = sqlite3.Row
+    cursor = connection.cursor()
+    select_all = "SELECT * FROM applications"
+    rows = cursor.execute(select_all).fetchall()
+    applications = []
+
+    # Output to the console screen
+    for i in rows:
+        applications.append(dict(i))
+    return applications
 # Committing the changes
 connection.commit()
 

@@ -1,0 +1,22 @@
+
+  <h1>All Applications</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Job Title</th>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for application in applications %}
+        <tr>
+          <td>{{ application.Company }}</td>
+          <td>{{ application.Title }}</td>
+          <td>{{ application.full_name }}</td>
+          <td>{{ application.email }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>

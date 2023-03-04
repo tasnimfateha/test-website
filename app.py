@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from database import job_list, job_details, addApplication, search_jobs
+from database import job_list, job_details, addApplication, search_jobs, applications_list
 
 app = Flask(__name__)
 
@@ -36,6 +36,10 @@ def search_jobs_route():
     jobs = search_jobs(position, location)
     return render_template('index.html', jobs=jobs)
 
-
+@app.route('/applications')
+def show_applications():
+    applications= applications_list()
+    return render_template('applications.html', applications=applications)
+    
 if __name__ == "__main__":
   app.run(host='0.0.0.0', debug= True)
