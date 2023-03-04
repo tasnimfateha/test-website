@@ -1,32 +1,62 @@
 <!DOCTYPE html>
 <html>
   <head>
-        {% include 'bootstrap.html' %}
-    <title>Application Submitted</title>  
+    {% include 'bootstrap.html' %}
+    <title>Application Submitted</title>
+    <style>
+      /* Add some margin and padding */
+      body {
+        margin: 20px;
+        padding: 20px;
+      }
+      /* Add some visual hierarchy to the headings */
+      h1 {
+        font-size: 32px;
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 20px;
+      }
+      h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #212529;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+      /* Add some color to the links */
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
-
-    <div>
-      <h1 class="text-center">CONGRATULATIONS!!</h1>
-      <p>Your application for the role of <b>{{job['Title']}}</b> at <b>{{job['Company']}}</b> has been submitted!</p>
-      
-      <b>Full Name</b>
-      <div class="mb-2">{{application['full_name']}}</div>
-  
-      <b>Email</b>
-      <div class="mb-2">{{application['email']}}</div>
-  
-      <b>LinkedIn URL</b>
-      <div class="mb-2">{{application['linkedin_url']}}</div>
-  
-      <b>Education</b>
-      <div class="mb-2">{{application['education']}}</div>
-  
-      <b>Work Experience</b>
-      <div class="mb-2">{{application['work_experience']}}</div>
-    </div>
-    <div>
-      <h1 class="text-center btn btn-primary"><a href="index.html">BACK TO HOME</a></h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <h1 class="text-center">CONGRATULATIONS!!</h1>
+          <p>Your application for the role of <b>{{job['Title']}}</b> at <b>{{job['Company']}}</b> has been submitted!</p>
+          <div class="mb-3">
+            <h2>Application Details</h2>
+            <b>Full Name</b>
+            <div class="mb-2">{{application['full_name']}}</div>
+            <b>Email</b>
+            <div class="mb-2">{{application['email']}}</div>
+            <b>LinkedIn URL</b>
+            <div class="mb-2">{{application['linkedin_url']}}</div>
+            <b>Education</b>
+            <div class="mb-2">{{application['education']}}</div>
+            <b>Work Experience</b>
+            <div class="mb-2">{{application['work_experience']}}</div>
+          </div>
+          <div class="mt-4 text-center">
+            <a href="/" class="btn btn-primary">Back to Home</a>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

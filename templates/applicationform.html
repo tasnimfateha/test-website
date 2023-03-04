@@ -1,8 +1,13 @@
+<!-- Include bootstrap CSS styles -->
 {% include 'bootstrap.html' %}
+<!-- Create a container for the form -->
 <div class="container mt-4">
+  <!-- Create a card to hold the form -->
   <div class="card">
     <div class="card-body">
+      <!-- Create a title for the card -->
       <h4 class="card-title">Application Form</h4>
+      <!-- Create a form with input fields for the applicant's information -->
       <form action="/job/{{job['id']}}/apply" method="post" class="form-group">
         <div>
           <label class="form-label">Full Name</label><br>
@@ -24,6 +29,7 @@
           <label class="form-label">Work Experience</label><br>
           <textarea name="work_experience" id="floatingTextarea" class="form-control" style="height: 100px"></textarea>
         </div>
+        <!-- Create a submit button -->
         <div class="mt-4">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
@@ -31,3 +37,6 @@
     </div>
   </div>
 </div>
+          <div class="mt-4 d-flex justify-content-center">
+        <a href="/" class="btn btn-secondary">Back to Home</a>
+      </div>
